@@ -72,7 +72,7 @@ Priority: 100 (low), Name: Anything (allow-any-inbound), Select Review + Create
 - Select workspace name > Virtual Machines > virtual machine name
 
 - Connect
-<img src="https://i.imgur.com/JL945Ga.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/2TdIFay.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 <h3>Step 6: Setup Microsoft Sentinel</h3> 
 
@@ -83,13 +83,14 @@ Priority: 100 (low), Name: Anything (allow-any-inbound), Select Review + Create
 - Choose Log Analytics Workspace name
 
 - Click Add
-<img src="https://i.imgur.com/K71yaM2.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/taBlSF0.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 <h3>Step 7: Turn OFF the VM's firewall</h3> 
 
 - For Windows: Open the Command Prompt: Press the Windows key, type "cmd," and press Enter to open the Command Prompt. Type the Ping Command: In the Command Prompt window, type the following command and press Enter: ping (ip-adress). Replace with the actual IP address you want to ping.
 
 - Observe the Results: the ping command will start sending packets to the specified IP address, and you'll see the results with round-trip times and other statistics. To stop the ping process on Windows, you can press Ctrl + C or Ctrl + Z
+<img src="https://i.imgur.com/qfywdrA.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 
 - Locate the honeypot VM under Virtual Machines
 
@@ -110,7 +111,8 @@ Priority: 100 (low), Name: Anything (allow-any-inbound), Select Review + Create
 - Click Apply and Ok
 
 - To check if VM is reachable, ping it using the command line of the host ping -t (ip-adress)
-<img src="https://i.imgur.com/AeZkvFQ.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/SMO2Tkx.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/zXQkz9m.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 <h3>Step 8: Automating the Security Log Exporter</h3> 
 
@@ -123,6 +125,7 @@ Priority: 100 (low), Name: Anything (allow-any-inbound), Select Review + Create
 - Choose New Script in Powershell ISE and paste script
 
 - Give it a name and save it to the desktop (log_exporter)
+<img src="https://i.imgur.com/e5RLMWl.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 
 - Create a profile with ipgeolocation.io
 
@@ -131,7 +134,7 @@ Priority: 100 (low), Name: Anything (allow-any-inbound), Select Review + Create
 - Click save
 
 - To generate log data continually, run the PowerShell ISE script (green play button) in the virtual machine
-<img src="https://i.imgur.com/K71yaM2.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/cZH6HUR.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 <h3>Step 9: Log Analytics Workspace: Make a Custom Log</h3> 
 
@@ -156,7 +159,7 @@ Priority: 100 (low), Name: Anything (allow-any-inbound), Select Review + Create
 - Details: Name and describe the custom log (FAILED_RDP_WITH_GEO) before pressing the Next button
 
 - Click Create
-<img src="https://i.imgur.com/K71yaM2.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/eZJt1pB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 <h3>Step 10: Query + Extract Fields from Custom Logs</h3> 
 
@@ -165,7 +168,8 @@ Priority: 100 (low), Name: Anything (allow-any-inbound), Select Review + Create
 - We then can run a query and extract the different data filtering by different fields such as latitude, longitude, destinationhost, etc.
 
 - Copy/Paste the following query into the query window and Run Query
-<img src="https://i.imgur.com/K71yaM2.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/ZKWdVMY.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/HHAKpEF.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 <h3>Step 11: Create World Attack Map in Microsoft Sentinel</h3> 
 
@@ -178,8 +182,7 @@ Priority: 100 (low), Name: Anything (allow-any-inbound), Select Review + Create
 - Click Add > Add query
 
 - You can Copy/Paste the previous query or this one into the query window and Run Query
-
-- We then can run a query and extract the different data filtering by different fields such as latitude, longitude, destinationhost, etc.
+<img src="https://i.imgur.com/xSeIor2.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 
 - When results appear, select Map from the Visualization drop-down box.
 
@@ -190,7 +193,9 @@ Priority: 100 (low), Name: Anything (allow-any-inbound), Select Review + Create
 - Color Settings: Coloring Type = Heatmap, Color by = event_count, Aggregation for color = Sum of Values, Color palette = Green to Red
 
 - Metric Settings: Metric Label = label, Metric Value = event_count, Click Apply button and Save and Close, Save as "Failed RDP International Map" in the same region and under the resource group (honeypot-lab), Keep refreshing the map to show more inbound failed RDP attacks
-<img src="https://i.imgur.com/K71yaM2.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/XK7DW0X.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/xY5pN0F.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/4KKg8TQ.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 <!--
  ```diff
